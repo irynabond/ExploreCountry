@@ -37,11 +37,50 @@ var map;
 var geocoder;
 
 function initMap() {
+    var style = [
+  {
+    "featureType": "landscape.natural.landcover",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "water",
+    "stylers": [
+      { "hue": "#00b2ff" },
+      { "color": "#4cb3e4" }
+    ]
+  },{
+    "featureType": "road.highway",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "administrative",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      { "visibility": "on" },
+      { "color": "#94ffa5" },
+      { "hue": "#ff0008" },
+      { "weight": 1.5 }
+    ]
+  },{
+    "featureType": "administrative.locality",
+    "elementType": "labels.text",
+    "stylers": [
+      { "visibility": "on" },
+      { "weight": 0.1 },
+      { "color": "#444880" }
+    ]
+  },{
+  }
+]
     map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: -34.397, lng: 150.644},
-        zoom: 3
+        zoom: 3,
+        styles: style
     });
     map.addListener('click', function(e) {   
+        //var latlng = new google.maps.LatLng(e.Ra.x, e.Ra.y)
         var latLng = e.latLng;
         positionCountryByLatLng(latLng);
     });
