@@ -41,7 +41,7 @@ function initMap() {
         center: {lat: -34.397, lng: 150.644},
         zoom: 3
     });
-    map.addListener('click', function(e) {	 
+    map.addListener('click', function(e) {   
         var latLng = e.latLng;
         positionCountryByLatLng(latLng);
     });
@@ -135,7 +135,3 @@ function showThingsToDo(selectedCountry) {
         }
     }
 };
-
-
-
-
