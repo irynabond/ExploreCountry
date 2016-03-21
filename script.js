@@ -13,11 +13,20 @@ $(function(){
 
    $('#firstCountries').on('change', countrySelectionChanged);
    $('#exploreButton').on('click', function(){
-       isMapMode = false;
-       modeChanged();
-       showThingsToDo($('#firstCountries').val());
+      var country =  $('#firstCountries').val();
+     if (country===null) {
+      swal({  title: "Pick a country first!",   
+               text: "You can do this by clicking on the map or choosing from a list",   
+               imageUrl: "Earth.ico" 
+            });
+    } else {
+      isMapMode = false;
+      modeChanged();
+      showThingsToDo(country);
+    }
    });
    $('#backToMap').click(function(){
+
        isMapMode = true;
        modeChanged();
    });
@@ -75,7 +84,7 @@ function initMap() {
   }
 ]
     map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -34.397, lng: 150.644},
+        center: {lat: 50, lng: 27.644},
         zoom: 3,
         styles: style
     });

@@ -36,20 +36,24 @@ html, body {
 
 #firstCountries {
     position: absolute;
-    top: 0px;
+    width: 15%;
+    top: 20px;
+    left: 20px;
 }
 
 #exploreButton {
     position: absolute;
     bottom: 40px;
-    left: 48%
+    left: 45%
 }
 
 #backToMap {
     position: fixed;
-    top: 0px;
-    width: 100%;
+    right:5.5%;
+    
     z-index: 2;
+    margin-top: 50px;
+   
 }
 
 .pic-container {
@@ -63,12 +67,18 @@ html, body {
 }
 
 .cityTitle {
-    margin-left: 20px;
+    margin-left: 75px;
 }
 
 .dateContainer {
     position: absolute;
     top: 50px;
     left: 20px;
-    width: 150px;
+    width: 15%;
+    padding-top: 17px;
+}
+
+p.date-picker {
+    color: rgb(245,86,41);
+    font-size: 20px;
 }

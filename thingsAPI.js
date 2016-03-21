@@ -47,20 +47,23 @@ function createButtons(fromCity, toCity, departure, arrival) {
    var flightDiv = $("<div class='cityButtonContainer'></div>");
    var hotelDiv = flightDiv.clone();
    var carDiv = flightDiv.clone();
+
+   var fromCityCode = fromCity.code;
+   var toCityCode = toCity.code;
    
    var flightPrice = getRandomInt(800, 1000);
+
+   
    var hotelPrice = getRandomInt(40, 70);
    var carPrice = getRandomInt(15, 25);
    
-   var flightExpediaButton = $("<button class='cityButton medium alert button'>Flight from "+ flightPrice +"$ </button>");
-   var hotelExpediaButton = $("<button class='cityButton medium alert button'>Hotel from "+hotelPrice+"$</button>");
-   var carExpediaButton = $("<button class='cityButton medium alert button'>Car from "+carPrice+"$ per day</button>");
-//    var flightPrice = $('<span>from 1000$</span>');
-//    var hotelPrice = $('<span>from 50$</span>');
-//    var carPrice = $('<span>from 25$</span>');
+   var flightExpediaButton = $("<button class='cityButton medium success button'>Flight from "+ flightPrice +"$ </button>");
+   var hotelExpediaButton = $("<button class='cityButton medium success button'>Hotel from "+hotelPrice+"$</button>");
+   var carExpediaButton = $("<button class='cityButton medium success button'>Car from "+carPrice+"$ per day</button>");
+
    
-   var fromCityCode = fromCity.code;
-   var toCityCode = toCity.code;
+   // var fromCityCode = fromCity.code;
+   // var toCityCode = toCity.code;
 
 //    showTravelData(fromCityCode, toCityCode, departure, arrival, function(prices) {
 //       console.log(prices);
@@ -123,13 +126,12 @@ function visualizationThings (city, things, departure, arrival) {
       tile_width:300
    }); 
 }
-
 function showTravelData (fromCityCode, toCityCode, departure, arrival, callback) {
   var travelData = {};
-  var departureDate = (new Date(departure)).toISOString();
-  var arrivalDate = (new Date(arrival)).toISOString();
+  var departureDate = (new Date(departure)).toISOString().slice(0,10);
+  var arrivalDate = (new Date(arrival)).toISOString().slice(0,10);
   $.ajax({
-    url: "http://terminal2.expedia.com:80/x/mflights/search?departureDate="+departureDate+"&returnDate="+arrivalDate+"&departureAirport="+ fromCityCode + "&arrivalAirport=" + toCityCode + "&apikey=TkefBxxLZbMGgOvKRGFLIkYJxcB3bYtA",
+    url: "http://terminal2.expedia.com:80/x/mflights/search?departureDate=" +departureDate+ "&returnDate=" + arrivalDate + "&departureAirport="+fromCityCode+"&arrivalAirport="+toCityCode+ "&apikey=TkefBxxLZbMGgOvKRGFLIkYJxcB3bYtA",
     type: "get",
     success: function(res) { 
       var results = res.offers;
