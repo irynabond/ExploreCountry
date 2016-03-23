@@ -19,23 +19,42 @@ function buildThingsToDoURL(toCity, toCountry, departure, arrival) {
 }
 
 function showThings (city) {
+  var isCountryThingsToDo = false;
+
   $.ajax({
     url: "http://terminal2.expedia.com:80/x/activities/search?location=" + city.city + "&startDate=2016-08-08&endDate=2016-08-18&apikey=lZg5sVj3LGQC7PZFGX6tkAw2mwAzyINJ",
     type: "get",
+    async: false, 
     success: function(res) { 
+
       var things = [];
       var results = res.activities;
-      for (var i = 0; i<results.length; i++) {
-        var thingsObject = {};
-        thingsObject.title = results[i].title;
-        thingsObject.image = results[i].imageUrl;
-        things.push(thingsObject);
+      if (results===undefined) {
+        return;
+      } else {
+          isCountryThingsToDo = true;
+
+          for (var i = 0; i<results.length; i++) {
+            var thingsObject = {};
+            thingsObject.title = results[i].title;
+            thingsObject.image = results[i].imageUrl;
+            things.push(thingsObject);
+          }
+          if (things.length<4) {
+            return;
+          }
+          var departureDate = $('#datepickerDepart').datepicker({ dateFormat: 'mm/dd/yyyy' }).val();
+          var returningDate = $('#datepickerReturn').datepicker({ dateFormat: 'mm/dd/yyyy' }).val();
+          isMapMode = false;
+          modeChanged();
+          visualizationThings (city, things, departureDate, returningDate);
       }
-      var departureDate = $('#datepickerDepart').datepicker({ dateFormat: 'mm/dd/yyyy' }).val();
-      var returningDate = $('#datepickerReturn').datepicker({ dateFormat: 'mm/dd/yyyy' }).val();
-      visualizationThings (city, things, departureDate, returningDate);
+      
     }
   });
+  /*if (i===length-1&&!isCountryThingsToDo&&isMapMode===true) {
+        swal("Oops!", "The data about country you picked is currently unavailable. Please, choose another country to explore or try again later");
+  }*/
 }
 
 function getRandomInt(min, max) {
@@ -89,6 +108,7 @@ function createButtons(fromCity, toCity, departure, arrival) {
 };
 
 function visualizationThings (city, things, departure, arrival) {
+
    var galleryId = 'gallery' + city.city;
    galleryId = galleryId.replace(/ /g,"");
    var $cityContainer = $("<div class='cityContainer'></div>");

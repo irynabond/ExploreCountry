@@ -20,9 +20,10 @@ $(function(){
                imageUrl: "Earth.ico" 
             });
     } else {
-      isMapMode = false;
-      modeChanged();
       showThingsToDo(country);
+      /*isMapMode = false;
+      modeChanged();*/
+      //showThingsToDo(country);
     }
    });
    $('#backToMap').click(function(){
@@ -30,10 +31,11 @@ $(function(){
        isMapMode = true;
        modeChanged();
    });
+   var date = new Date();
    $('#datepickerDepart').datepicker();
-   $('#datepickerDepart').datepicker('setDate', new Date("02/08/2016"));
+   $('#datepickerDepart').datepicker('setDate', date.toLocaleDateString());
    $('#datepickerReturn').datepicker();
-   $('#datepickerReturn').datepicker('setDate', new Date("02/14/2016"));
+   $('#datepickerReturn').datepicker('setDate', date.toLocaleDateString());
    modeChanged();
 
 }); 
@@ -99,9 +101,13 @@ function initMap() {
 
 function countrySelectionChanged(event) {
     var country = $('#firstCountries').val();
-    positionCountry(country);
-    var exploreText = $('#exploreButton').text();
-    $('#exploreButton').text("Explore " + country);
+    if (country===null) {
+      swal("Oops!", "The data about country you picked is currently unavailable. Please, choose another country to explore or try again later")
+    } else {
+      positionCountry(country);
+      var exploreText = $('#exploreButton').text();
+      $('#exploreButton').text("Explore " + country);
+    }
 };
 
 function positionCountry(country) {
@@ -173,15 +179,24 @@ function renderCountries(countries) {
 
 function showThingsToDo(selectedCountry) {
     if(selectedCountry){
-        $('.pic-container')[0].innerHTML = "";
-        //console.log('Showing things to do for country: ' + selectedCountry);
-        var cities = countryInfo[selectedCountry].cities;
-        for(var i = 0; i<cities.length; ++i){
-            var city = cities[i];
-            showThings(city);
+      $('.pic-container')[0].innerHTML = "";
+      var cities = countryInfo[selectedCountry].cities;
+      var i;
+      var map = {};
+      for(i = 0; i<cities.length; i++){
+        if (!map[cities[i].city]) {
+          var city = cities[i];
+          showThings(city);
+          map[cities[i].city] = true;
         }
+      }
+      if (i===cities.length&&isMapMode) {
+
+        swal("Oops!", "The data about country you picked is currently unavailable. Please, choose another country to explore or try again later");
+    
     }
-};
+  };
+}
 
 
 

@@ -79,6 +79,20 @@ html, body {
 }
 
 p.date-picker {
+    margin-top: 10px;
     color: rgb(245,86,41);
     font-size: 20px;
+}
+
+ #btn-close-modal {
+    width:100%;
+    text-align: center;
+    cursor:pointer;
+    color:#fff;
+}
+
+.modal-btn {
+    position: absolute;
+    top:0;
+    right:0;
 }
