@@ -96,3 +96,26 @@ p.date-picker {
     top:0;
     right:0;
 }
+#closebtn-container {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin-top: 40px;
+}
+.closebtn {
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -ms-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.closebtn:hover {
+    transform:rotate(90deg);
+}
+
+img {
+    vertical-align: middle;
+    border: 0;
+}
