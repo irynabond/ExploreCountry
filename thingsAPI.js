@@ -108,6 +108,7 @@ function createButtons(fromCity, toCity, departure, arrival) {
 };
 
 function visualizationThings (city, things, departure, arrival) {
+   $("#floatingCirclesG").hide();
 
    var galleryId = 'gallery' + city.city;
    galleryId = galleryId.replace(/ /g,"");

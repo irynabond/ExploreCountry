@@ -2,6 +2,7 @@
 /* global $ */
 
 $(function(){
+ $("#floatingCirclesG").hide();
    populateCountries();
    renderCountries(countries);
    //$( "#firstCountries" ).combobox();
@@ -13,13 +14,18 @@ $(function(){
 
    $('#firstCountries').on('change', countrySelectionChanged);
    $('#exploreButton').on('click', function(){
-      var country =  $('#firstCountries').val();
+    $("#floatingCirclesG").show();
+
+     var country =  $('#firstCountries').val();
      if (country===null) {
+     $("#floatingCirclesG").hide();
+
       swal({  title: "Pick a country first!",   
                text: "You can do this by clicking on the map or choosing from a list",   
                imageUrl: "Earth.ico" 
             });
     } else {
+      $("#floatingCirclesG").hide();
       showThingsToDo(country);
       /*isMapMode = false;
       modeChanged();*/
@@ -39,6 +45,8 @@ $(function(){
    modeChanged();
 
 }); 
+
+
 
 var isMapMode = true;
 var airports = airportData.airports;
@@ -192,7 +200,7 @@ function showThingsToDo(selectedCountry) {
         }
       }
       if (i===cities.length&&isMapMode) {
-
+        $("#floatingCirclesG").hide();
         swal("Oops!", "The data about country you picked is currently unavailable. Please, choose another country to explore or try again later");
     
     }
