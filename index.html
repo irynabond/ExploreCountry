@@ -2,13 +2,16 @@
 
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>Explore Country</title>
+  <link rel="stylesheet" href="css/slide-in-panel/css/style.css"> <!-- Resource style -->
+  <script src="css/slide-in-panel/js/modernizr.js"></script> <!-- Modernizr -->
+  <link rel="stylesheet" type="text/css" href="style.css"></link>
   <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
   <script type='text/javascript' src='unitegallery/js/unitegallery.min.js'></script> 
   <link rel='stylesheet' href='unitegallery/css/unite-gallery.css' type='text/css' /> 
   <script type='text/javascript' src='unitegallery/themes/tilesgrid/ug-theme-tilesgrid.js'></script>  
-  <link rel="stylesheet" type="text/css" href="style.css"></link>
   <link rel="stylesheet" type="text/css" href="foundation.css"></link>
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
   <link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
@@ -19,34 +22,44 @@
 </head>
 
 <body>
-
-
   <div id="first">
       <div id="map"></div>
-      <a id="demo02" class = "modal-btn" href="#modal-02">DEMO02</a>
-      <select id="firstCountries" class="countries"></select>
+      
+       <a href="#0" class="cd-btn"><i class="fa fa-bars"></i></a>
       <!--<input id="firstCountries">-->
       <button id="exploreButton" class="large alert round button">Explore country</button>
-      <div class="dateContainer">
-        <p class = "date-picker">Departing: <input type="text" id="datepickerDepart"></p>
-        <p class = "date-picker">Returning: <input type="text" id="datepickerReturn"></p>    
-      </div>
-       
-   
+      
   </div>  
   
   <div id="details">
-    <!--<select class="countries">
-    </select>
-    <a href="#" id="showButton" class="medium success button">Show</a>-->
     <button id="backToMap" class="medium primary button">Choose another country on the map!</button>
-    <div class = "pic-container"></div>
   </div>
+<!--slide panel-->
+  
+  <div class="cd-panel from-left">
+    <header class="cd-panel-header">
+      <h5>Menu bar</h5>
+      <a href="#0" class="cd-panel-close">Close</a>
+    </header>
+   
+    <div class="cd-panel-container">
+      <div class="cd-panel-content">
+        <div class = "pic-container">
+         <select id="firstCountries" class="countries"></select>
+          <div class="dateContainer">
+            <p class = "date-picker">Departing: <input type="text" id="datepickerDepart"></p>
+            <p class = "date-picker">Returning: <input type="text" id="datepickerReturn"></p>    
+          </div>
+          <a id="demo02" class = "modal-btn" href="#modal-02">About us</a>
+      </div>
+      </div> <!-- cd-panel-content -->
+    </div> <!-- cd-panel-container -->
+  </div> <!-- cd-panel -->
+
+
+
   <!--modal code-->
- 
-  <!--DEMO02-->
   <div id="modal-02">
-      <!--"THIS IS IMPORTANT! to close the modal, the class name has to match the name given on the ID-->
       <div  id="btn-close-modal" class="close-modal-02">
          <div id="closebtn-container" class = "closeLightSpeedIn">
             <img class = "closebtn" src= "img/closebt.svg">
@@ -98,6 +111,7 @@
   <script src="dist/sweetalert.min.js"></script> 
   <script src="js/animatedModal.min.js"></script>
   <script src="modal.js"></script> 
+  <script src="css/slide-in-panel/js/main.js"></script>
 
 </body>
 </html>

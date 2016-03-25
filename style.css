@@ -39,7 +39,6 @@ html, body {
 
 #firstCountries {
     position: absolute;
-    width: 15%;
     top: 20px;
     left: 20px;
 }
@@ -77,7 +76,6 @@ html, body {
     position: absolute;
     top: 50px;
     left: 20px;
-    width: 15%;
     padding-top: 17px;
 }
 
@@ -94,11 +92,7 @@ p.date-picker {
     color:#fff;
 }
 
-.modal-btn {
-    position: absolute;
-    top:0;
-    right:0;
-}
+
 #closebtn-container {
     position: relative;
     width: 100%;
@@ -200,3 +194,55 @@ img {
     color: #39BEB9;
 }
 
+.cd-panel {
+    /*...*/
+    visibility: hidden;
+    transition: visibility 0s 0.6s;
+}
+ 
+.cd-panel.is-visible {
+    visibility: visible;
+    transition: visibility 0s 0s;
+}
+ 
+.cd-panel-header {
+    /*...*/
+    position: fixed;
+    top: -50px;
+    width: 20%;
+    height: 50px;
+    transition: top 0.3s 0s;
+}
+ 
+.is-visible .cd-panel-header {
+    top: 0;
+    transition: top 0.3s 0.3s;
+}
+ 
+.cd-panel-container {
+    /*...*/
+    position: fixed;
+    width: 20%;
+    height: 100%;
+    top: 0;
+    right: 0;
+ 
+    transition-property: transform;
+    transition-duration: 0.3s;
+    transition-delay: 0.3s;
+ 
+    transform: translate3d(100%, 0, 0);
+}
+ 
+.is-visible .cd-panel-container {
+    transform: translate3d(0, 0, 0);
+    transition-delay: 0s;
+}
+
+.cd-btn, .cd-btn:hover {
+    position: absolute;
+    top:0;
+    left:20px;
+    font-size: 50px;
+    color: rgb(255, 146, 138);
+}

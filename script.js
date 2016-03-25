@@ -88,6 +88,7 @@ function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 50, lng: 27.644},
         zoom: 3,
+        disableDefaultUI: true,
         styles: style
     });
     map.addListener('click', function(e) {	 
