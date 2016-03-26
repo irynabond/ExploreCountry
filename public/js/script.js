@@ -19,7 +19,7 @@ $(function(){
 
       swal({  title: "Pick a country first!",   
                text: "You can do this by clicking on the map or choosing from a list",   
-               imageUrl: "Earth.ico" 
+               imageUrl: "public/img/Earth.ico" 
             });
     } else {
       $("#floatingCirclesG").hide();
