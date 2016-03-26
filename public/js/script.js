@@ -194,6 +194,7 @@ function showThingsToDo(selectedCountry) {
       if (i===cities.length&&isMapMode) {
         $("#floatingCirclesG").hide();
         swal("Oops!", "The data about country you picked is currently unavailable. Please, choose another country to explore or try again later");
+    
     }
   };
 }
