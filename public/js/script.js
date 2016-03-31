@@ -180,22 +180,26 @@ function renderCountries(countries) {
 
 function showThingsToDo(selectedCountry) {
     if(selectedCountry){
+      var defArr= [];
       $('.pic-container')[0].innerHTML = "";
       var cities = countryInfo[selectedCountry].cities;
-      var i;
       var map = {};
-      for(i = 0; i<cities.length; i++){
+      for(var i = 0; i<cities.length; i++){
         if (!map[cities[i].city]) {
           var city = cities[i];
-          showThings(city);
+          showThings(city, defArr);
           map[cities[i].city] = true;
         }
       }
-      if (i===cities.length&&isMapMode) {
+       $.when.apply(this, defArr).done(function() {
         $("#floatingCirclesG").hide();
-        swal("Oops!", "The data about country you picked is currently unavailable. Please, choose another country to explore or try again later");
-    
-    }
+      }).then(function(val){
+        if (isMapMode===true) {
+          swal("Oops!", "The data about country you picked is currently unavailable. Please, choose another country to explore or try again later");
+        } else {
+          console.log("all done");
+        }
+      });  
   };
 }
 

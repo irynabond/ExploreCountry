@@ -18,22 +18,21 @@ function buildThingsToDoURL(toCity, toCountry, departure, arrival) {
     return "https://www.expedia.com/things-to-do/?location="+toCity+", "+toCountry+"&startDate="+departure+"&endDate="+arrival;
 }
 
-function showThings (city) {
-  var isCountryThingsToDo = false;
-
+function showThings (city, defArr) {
+  //var def = $.Deferred();
+  // def.done(function(def){
+  //   defArr.push(def);
+  // })
+  var deferred = $.Deferred();
+  defArr.push(deferred);
   $.ajax({
     url: "http://terminal2.expedia.com:80/x/activities/search?location=" + city.city + "&startDate=2016-08-08&endDate=2016-08-18&apikey=lZg5sVj3LGQC7PZFGX6tkAw2mwAzyINJ",
     type: "get",
-    async: false, 
     success: function(res) { 
-
+      
       var things = [];
       var results = res.activities;
-      if (results===undefined) {
-        return;
-      } else {
-          isCountryThingsToDo = true;
-
+      if (results!==undefined) {
           for (var i = 0; i<results.length; i++) {
             var thingsObject = {};
             thingsObject.title = results[i].title;
@@ -41,6 +40,7 @@ function showThings (city) {
             things.push(thingsObject);
           }
           if (things.length<4) {
+            deferred.resolve(); 
             return;
           }
           var departureDate = $('#datepickerDepart').datepicker({ dateFormat: 'mm/dd/yyyy' }).val();
@@ -49,9 +49,14 @@ function showThings (city) {
           modeChanged();
           visualizationThings (city, things, departureDate, returningDate);
       }
-      
+      deferred.resolve(); 
+    }, error: function(){
+      deferred.resolve();
     }
+
   });
+  
+  
 }
 
 function getRandomInt(min, max) {
@@ -100,8 +105,10 @@ function createButtons(fromCity, toCity, departure, arrival) {
 function visualizationThings (city, things, departure, arrival) {
    $("#floatingCirclesG").hide();
 
-   var galleryId = 'gallery' + city.city;
+   var galleryId = 'gallery' + city.city.toLowerCase();
    galleryId = galleryId.replace(/ /g,"");
+
+
    var $cityContainer = $("<div class='cityContainer'></div>");
    var $galleryContainer = $("<div id='" + galleryId + "' class='galleryDiv'></div>") //.addClass('none');
    var title = $('<div class="cityTitle"></div>');
