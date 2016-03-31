@@ -1,3 +1,5 @@
+Published to explorecountry.azurewebsites.net
+
 # ExploreCountry
 
 ##Inspiration
