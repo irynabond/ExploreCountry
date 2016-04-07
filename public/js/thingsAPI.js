@@ -19,10 +19,7 @@ function buildThingsToDoURL(toCity, toCountry, departure, arrival) {
 }
 
 function showThings (city, defArr) {
-  //var def = $.Deferred();
-  // def.done(function(def){
-  //   defArr.push(def);
-  // })
+ 
   var deferred = $.Deferred();
   defArr.push(deferred);
   $.ajax({
