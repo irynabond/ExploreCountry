@@ -3,15 +3,15 @@ html {
 
 }
 .cityButtonContainer {
-	display: inline-block;
+    display: inline-block;
 }
 
 .cityButtonGroup {
-	display: inline-block;
+    display: inline-block;
 }
 
 .titleText {
-	display: inline-block;
+    display: inline-block;
     margin-right: 10px;
 }
 
@@ -21,7 +21,7 @@ html {
 }
 
 .none {
-	display:none;
+    display:none;
 }
 
 html, body {
@@ -40,14 +40,15 @@ html, body {
 
 #exploreButton {
     position: absolute;
-    bottom: 20px;
-    left: 45%
+    bottom: 0px;
+    left: 50%;
+    right: 30%;
+    transform: translate(-30%, -30%);
 }
 
 #backToMap {
     position: fixed;
     right:5.5%;
-    
     z-index: 2;
     margin-top: 50px;
    
@@ -258,4 +259,3 @@ p.date-picker {
     width:176px;
     height:176px;
 }
-

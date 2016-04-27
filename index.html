@@ -12,7 +12,7 @@
   <script type='text/javascript' src='libs/unitegallery/js/unitegallery.min.js'></script> 
   <link rel='stylesheet' href='libs/unitegallery/css/unite-gallery.css' type='text/css' /> 
   <script type='text/javascript' src='libs/unitegallery/themes/tilesgrid/ug-theme-tilesgrid.js'></script>  
-  <link rel="stylesheet" type="text/css" href="libs/foundation.css"></link>
+  <link rel="stylesheet" type="text/css" href="libs/foundation/foundation.css"></link>
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
   <link rel="stylesheet" type="text/css" href="libs/dist/sweetalert.css">
   <link rel="stylesheet" href="libs/animate.min.css">
@@ -24,11 +24,16 @@
 <body>
 
   <div id="first">
+
     <div id="map"></div>
      <a href="#0" class="cd-btn"><i class="fa fa-bars"></i></a>
      <div id="floatingCirclesG"></div>
     <!--<input id="firstCountries">-->
-    <button id="exploreButton" class="large alert round button">Explore country</button>  
+    <div class = "row">
+      <div class = "medium-12 small-12 large-12 columns">
+        <button id="exploreButton" class="large alert round button">Explore country</button> 
+      </div>
+    </div> 
   </div>  
   
   <div id="details">
@@ -99,6 +104,8 @@
   <!---end of modal code-->
 
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+  <script src = "libs/foundation/foundation.min.js"></script>
+
   <script src="public/js/airports.js"></script>
   <script src="public/js/thingsAPI.js"></script>
   <script src="public/js/script.js"></script>
